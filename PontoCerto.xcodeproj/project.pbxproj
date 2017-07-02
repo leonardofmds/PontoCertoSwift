@@ -1,0 +1,325 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A736348C1F08B9CF00481C7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A736348B1F08B9CF00481C7F /* AppDelegate.swift */; };
+		A736348E1F08B9CF00481C7F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A736348D1F08B9CF00481C7F /* ViewController.swift */; };
+		A73634911F08B9CF00481C7F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A736348F1F08B9CF00481C7F /* Main.storyboard */; };
+		A73634941F08B9CF00481C7F /* PontoCerto.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A73634921F08B9CF00481C7F /* PontoCerto.xcdatamodeld */; };
+		A73634961F08B9CF00481C7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A73634951F08B9CF00481C7F /* Assets.xcassets */; };
+		A73634991F08B9CF00481C7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A73634971F08B9CF00481C7F /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A73634881F08B9CF00481C7F /* PontoCerto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PontoCerto.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A736348B1F08B9CF00481C7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A736348D1F08B9CF00481C7F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A73634901F08B9CF00481C7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A73634931F08B9CF00481C7F /* PontoCerto.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PontoCerto.xcdatamodel; sourceTree = "<group>"; };
+		A73634951F08B9CF00481C7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A73634981F08B9CF00481C7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A736349A1F08B9CF00481C7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A73634851F08B9CF00481C7F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A736347F1F08B9CF00481C7F = {
+			isa = PBXGroup;
+			children = (
+				A736348A1F08B9CF00481C7F /* PontoCerto */,
+				A73634891F08B9CF00481C7F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A73634891F08B9CF00481C7F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A73634881F08B9CF00481C7F /* PontoCerto.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A736348A1F08B9CF00481C7F /* PontoCerto */ = {
+			isa = PBXGroup;
+			children = (
+				A736348B1F08B9CF00481C7F /* AppDelegate.swift */,
+				A736348D1F08B9CF00481C7F /* ViewController.swift */,
+				A736348F1F08B9CF00481C7F /* Main.storyboard */,
+				A73634951F08B9CF00481C7F /* Assets.xcassets */,
+				A73634971F08B9CF00481C7F /* LaunchScreen.storyboard */,
+				A736349A1F08B9CF00481C7F /* Info.plist */,
+				A73634921F08B9CF00481C7F /* PontoCerto.xcdatamodeld */,
+			);
+			path = PontoCerto;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A73634871F08B9CF00481C7F /* PontoCerto */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A736349D1F08B9CF00481C7F /* Build configuration list for PBXNativeTarget "PontoCerto" */;
+			buildPhases = (
+				A73634841F08B9CF00481C7F /* Sources */,
+				A73634851F08B9CF00481C7F /* Frameworks */,
+				A73634861F08B9CF00481C7F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PontoCerto;
+			productName = PontoCerto;
+			productReference = A73634881F08B9CF00481C7F /* PontoCerto.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A73634801F08B9CF00481C7F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Leonardo Santos";
+				TargetAttributes = {
+					A73634871F08B9CF00481C7F = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = A73634831F08B9CF00481C7F /* Build configuration list for PBXProject "PontoCerto" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A736347F1F08B9CF00481C7F;
+			productRefGroup = A73634891F08B9CF00481C7F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A73634871F08B9CF00481C7F /* PontoCerto */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A73634861F08B9CF00481C7F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A73634991F08B9CF00481C7F /* LaunchScreen.storyboard in Resources */,
+				A73634961F08B9CF00481C7F /* Assets.xcassets in Resources */,
+				A73634911F08B9CF00481C7F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A73634841F08B9CF00481C7F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A73634941F08B9CF00481C7F /* PontoCerto.xcdatamodeld in Sources */,
+				A736348E1F08B9CF00481C7F /* ViewController.swift in Sources */,
+				A736348C1F08B9CF00481C7F /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A736348F1F08B9CF00481C7F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A73634901F08B9CF00481C7F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A73634971F08B9CF00481C7F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A73634981F08B9CF00481C7F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A736349B1F08B9CF00481C7F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A736349C1F08B9CF00481C7F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A736349E1F08B9CF00481C7F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = PontoCerto/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = unirio.PontoCerto;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		A736349F1F08B9CF00481C7F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = PontoCerto/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = unirio.PontoCerto;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A73634831F08B9CF00481C7F /* Build configuration list for PBXProject "PontoCerto" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A736349B1F08B9CF00481C7F /* Debug */,
+				A736349C1F08B9CF00481C7F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A736349D1F08B9CF00481C7F /* Build configuration list for PBXNativeTarget "PontoCerto" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A736349E1F08B9CF00481C7F /* Debug */,
+				A736349F1F08B9CF00481C7F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A73634921F08B9CF00481C7F /* PontoCerto.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A73634931F08B9CF00481C7F /* PontoCerto.xcdatamodel */,
+			);
+			currentVersion = A73634931F08B9CF00481C7F /* PontoCerto.xcdatamodel */;
+			path = PontoCerto.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = A73634801F08B9CF00481C7F /* Project object */;
+}
