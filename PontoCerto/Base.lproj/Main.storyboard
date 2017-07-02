@@ -38,11 +38,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="532-hW-JeI">
-                                <rect key="frame" x="313" y="617" width="46" height="30"/>
+                                <rect key="frame" x="330" y="617" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="RKL-df-Foz" kind="show" identifier="toFav" id="V8j-DY-qHt"/>
+                                    <action selector="editaFavoritoButton" destination="BYZ-38-t0r" eventType="touchUpInside" id="PSC-Mh-b3i"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mdq-Gm-tvx">
@@ -90,16 +90,17 @@
                     <connections>
                         <outlet property="DisciplinasTableView" destination="Mdq-Gm-tvx" id="czm-SZ-HIT"/>
                         <outlet property="FavoritosTableView" destination="tc6-Uj-wX4" id="MBc-Tn-IuR"/>
+                        <segue destination="RKL-df-Foz" kind="show" identifier="toFav" id="T8T-8K-UgM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="840.79999999999995" y="123.68815592203899"/>
         </scene>
-        <!--View Controller-->
+        <!--Notas View Controller-->
         <scene sceneID="C9D-Lr-XXb">
             <objects>
-                <viewController id="RKL-df-Foz" sceneMemberID="viewController">
+                <viewController id="RKL-df-Foz" customClass="NotasViewController" customModule="PontoCerto" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="AKd-My-jop"/>
                         <viewControllerLayoutGuide type="bottom" id="413-4b-da3"/>
@@ -107,8 +108,20 @@
                     <view key="view" contentMode="scaleToFill" id="IcU-hk-LTJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ttr-op-EPE">
+                                <rect key="frame" x="54" y="98" width="277" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="NomeDisciplinaLabel" destination="Ttr-op-EPE" id="qsY-6g-6hW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SjU-dA-FFa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

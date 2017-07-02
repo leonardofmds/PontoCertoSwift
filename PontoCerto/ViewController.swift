@@ -16,6 +16,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var DisciplinasTableView: UITableView!
     
+    var disciplinaToFav : String! = nil
+    
     
     @IBAction func addFavoritoButton()
     {
@@ -44,6 +46,27 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         DisciplinasTableView.reloadData()
         FavoritosTableView.reloadData()
     }
+    
+    
+    @IBAction func editaFavoritoButton()
+    {
+        let cell : UITableViewCell! = FavoritosTableView.cellForRow(at: FavoritosTableView.indexPathForSelectedRow!)
+        let t : String! = cell.textLabel!.text
+        disciplinaToFav = t
+        
+        self.performSegue(withIdentifier: "toFav", sender: self)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    	{
+        if segue.identifier == "toFav"
+        {
+            let notasViewController = segue.destination as! NotasViewController
+            notasViewController.alteraNome(nome: disciplinaToFav)
+        }
+    }
+    
     
     
         var list = ["Administração Financeira","Álgebra Linear","Análise de Algoritmo","Análise de Sistemas","Análise Empresarial e Admin.","Banco de Dados I","Banco de Dados II","Cálculo Diferenc. e Integral I",   "Cálculo Diferenc. e Integral II","Desenvolv. de Páginas Web","Empreendedorismo","Estatística","Estruturas de Dados I","Estruturas de Dados II","Estruturas Discretas","Fund. de Sist. de Informação","Gerência de Proj. de Informat.",   "Interação Humano Computador",   "Introdução à Lógica Computac.","Linguag. Formais e Autômatos","Matemática Básica","Organização de Computadores","Probabilidade","Processos de Software","Programação Modular","Projeto de Graduação I","Projeto de Graduação II",   "Proj. e Const. de Sistemas",   "Proj. Const. Sistemas-SGBD","Redes de Computadores I","Redes de Computadores II","Sistemas Operacionais","Técnicas de Programação I","Técnicas de Programação II","Teorias e Práticas Discursivas","Administ. de Banco de Dados","Algoritmos p/ Prob. Combinat.",   "Ambiente Operacional Unix",   "Compiladores","Computação Gráfica","Comunic. e Segurança de Dados","Desenvolv. de Servidor Web","Fluxos em Redes","Fund. Repr. Conh. e Raciocínio","Gerência de Dados em Amb. Distribuídos e Paralelos","Gest. de Processos de Negócios","Informática na Educação",   "Inteligéncia Artificial",   "Programação Linear","Sistemas Colaborativos","Sistemas Multimídia","Tóp. Avançados em Algoritmos","Tóp. Avançados em BD I","Tóp. Avançados em BD II","Tóp. Avançados em BD III","Tóp. Avançados em Eng. Sw. I","Tóp. Avançados em Eng. Sw. II","Tóp. Avan. em Redes de Comp. I","Tóp. Avan. em Redes de Comp. II","Tóp. Avan. em Redes de Comp. III"]
@@ -88,7 +111,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.title = "Controle de disciplinas"
+        self.title = "Disciplinas"
     }
 
     override func didReceiveMemoryWarning() {
