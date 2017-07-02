@@ -19,8 +19,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBAction func addFavoritoButton()
     {
-        var selectedIndexPath = DisciplinasTableView.indexPathForSelectedRow
-        var index:Int  = (selectedIndexPath!.last!)
+        let selectedIndexPath = DisciplinasTableView.indexPathForSelectedRow
+        let index:Int  = (selectedIndexPath!.last!)
         favoritosList.append(list[index])
         list.remove(at: index)
         
@@ -33,8 +33,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBAction func removeFavoritoButton()
     {
-        var selectedIndexPath = FavoritosTableView.indexPathForSelectedRow
-        var index:Int  = (selectedIndexPath!.last!)
+        let selectedIndexPath = FavoritosTableView.indexPathForSelectedRow
+        let index:Int  = (selectedIndexPath!.last!)
         list.append(favoritosList[index])
         favoritosList.remove(at: index)
         
@@ -88,6 +88,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.title = "Controle de disciplinas"
     }
 
     override func didReceiveMemoryWarning() {
