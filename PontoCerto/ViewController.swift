@@ -54,6 +54,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     {
         let selectedIndexPath = DisciplinasTableView.indexPathForSelectedRow!
         
+        
         let disc = disciplinas[selectedIndexPath.row]
         context.delete(disc)
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
@@ -109,21 +110,36 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     var disciplinaToFav : String! = nil
     
-    
+    func alertSelect()
+    {
+        let alert = UIAlertController(title: "Erro", message: "Por favor selecione um campo primeiro.", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
     
     
     @IBAction func addFavoritoButton()
     {
         var nomeDisciplina:String = ""
         
-        nomeDisciplina = (DisciplinasTableView.cellForRow(at: (DisciplinasTableView.indexPathForSelectedRow)!)?.textLabel?.text)!;
+        if let selectedIndexPath = DisciplinasTableView.indexPathForSelectedRow
+        {
+            nomeDisciplina = (DisciplinasTableView.cellForRow(at: (selectedIndexPath))?.textLabel?.text)!;
+            
+            removeFromDisciplinaCoreData(nome: nomeDisciplina)
+            addToFavoritoCoreData(nome: nomeDisciplina)
+            
+            getData()
+            DisciplinasTableView.reloadData()
+            FavoritosTableView.reloadData()
+        }
         
-        removeFromDisciplinaCoreData(nome: nomeDisciplina)
-        addToFavoritoCoreData(nome: nomeDisciplina)
+        else
+        {
+            alertSelect();
+        }
         
-        getData()
-        DisciplinasTableView.reloadData()
-        FavoritosTableView.reloadData()
+
     }
     
     
@@ -131,7 +147,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     {
         var nomeFavorito:String = ""
         
-        nomeFavorito = (FavoritosTableView.cellForRow(at: (FavoritosTableView.indexPathForSelectedRow)!)?.textLabel?.text)!;
+        if let selectedIndexPath = FavoritosTableView.indexPathForSelectedRow
+        {
+        
+        nomeFavorito = (FavoritosTableView.cellForRow(at: (selectedIndexPath))?.textLabel?.text)!;
         
         removeFromFavoritoCoreData(nome: nomeFavorito)
         addToDisciplinaCoreData(nome: nomeFavorito)
@@ -139,16 +158,30 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         getData()
         DisciplinasTableView.reloadData()
         FavoritosTableView.reloadData()
+        }
+        else
+        {
+            alertSelect()
+        }
+        
     }
     
     
     @IBAction func editaFavoritoButton()
     {
-        let cell : UITableViewCell! = FavoritosTableView.cellForRow(at: FavoritosTableView.indexPathForSelectedRow!)
+        
+        if let selectedIndexPath = FavoritosTableView.indexPathForSelectedRow
+        {
+        let cell : UITableViewCell! = FavoritosTableView.cellForRow(at: selectedIndexPath)
         let t : String! = cell.textLabel!.text
         disciplinaToFav = t
         
         self.performSegue(withIdentifier: "toFav", sender: self)
+        }
+        else
+        {
+            alertSelect()
+        }
         
     }
     
