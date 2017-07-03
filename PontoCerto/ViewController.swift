@@ -84,18 +84,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func populateWhenEmpty()
     {
-        var test: [Disciplina] = []
+        var testDisc: [Disciplina] = []
+        var testFav: [Favorito] = []
         do {
-            test = try context.fetch(Disciplina.fetchRequest())
+            testDisc = try context.fetch(Disciplina.fetchRequest())
+            testFav = try context.fetch(Favorito.fetchRequest())
         } catch {
             print("Fetching Failed")
         }
         
-        if(test.count==0)
+        if(testDisc.count==0 && testFav.count == 0)
         {
             for dis in list
             {
-                addToFavoritoCoreData(nome: dis)
+                addToDisciplinaCoreData(nome: dis)
                 getData()
                 DisciplinasTableView.reloadData()
             }
@@ -142,6 +144,24 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     }
     
+    func deleteAllData()
+    {
+        for item in disciplinas
+        {
+        context.delete(item)
+        }
+        for item in favoritos
+        {
+            context.delete(item)
+        }
+        
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        
+        getData()
+        DisciplinasTableView.reloadData()
+        FavoritosTableView.reloadData()
+    
+    }    
     
     @IBAction func removeFavoritoButton()
     {
