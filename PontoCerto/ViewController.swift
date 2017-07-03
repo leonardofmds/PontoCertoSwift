@@ -10,7 +10,98 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var disciplinas: [Disciplina] = []
+    var favoritos: [Favorito] = []
     
+    override func viewWillAppear(_ animated: Bool)
+    {
+        getData()
+        DisciplinasTableView.reloadData()
+        FavoritosTableView.reloadData()
+    }
+    
+    func getData() {
+        do {
+            disciplinas = try context.fetch(Disciplina.fetchRequest())
+            favoritos = try context.fetch(Favorito.fetchRequest())
+        } catch {
+            print("Fetching Failed")
+        }
+    }
+    
+    func addToDisciplinaCoreData(nome: String)
+    {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let disc = Disciplina(context: context) // Link Task & Context
+        disc.nome = nome
+        
+        // Save the data to coredata
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+    }
+    
+    func addToFavoritoCoreData(nome: String)
+    {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let favs = Favorito(context: context) // Link Task & Context
+        favs.nome = nome
+        
+        // Save the data to coredata
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+    }
+    
+    func removeFromDisciplinaCoreData(nome:String)
+    {
+        let selectedIndexPath = DisciplinasTableView.indexPathForSelectedRow!
+        
+        let disc = disciplinas[selectedIndexPath.row]
+        context.delete(disc)
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        
+        do {
+            disciplinas = try context.fetch(Disciplina.fetchRequest())
+        } catch {
+            print("Fetching Failed")
+        }
+        
+    }
+
+    func removeFromFavoritoCoreData(nome:String)
+    {
+        let selectedIndexPath = FavoritosTableView.indexPathForSelectedRow!
+        
+        let favs = favoritos[selectedIndexPath.row]
+        context.delete(favs)
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        
+        do {
+            favoritos = try context.fetch(Favorito.fetchRequest())
+        } catch {
+            print("Fetching Failed")
+        }
+    }
+    
+    func populateWhenEmpty()
+    {
+        var test: [Disciplina] = []
+        do {
+            test = try context.fetch(Disciplina.fetchRequest())
+        } catch {
+            print("Fetching Failed")
+        }
+        
+        if(test.count==0)
+        {
+            for dis in list
+            {
+                addToFavoritoCoreData(nome: dis)
+                getData()
+                DisciplinasTableView.reloadData()
+            }
+        }
+        
+    }
+
     
     @IBOutlet weak var FavoritosTableView: UITableView!
     
@@ -19,30 +110,33 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var disciplinaToFav : String! = nil
     
     
+    
+    
     @IBAction func addFavoritoButton()
     {
-        let selectedIndexPath = DisciplinasTableView.indexPathForSelectedRow
-        let index:Int  = (selectedIndexPath!.last!)
-        favoritosList.append(list[index])
-        list.remove(at: index)
+        var nomeDisciplina:String = ""
         
-        favoritosList = ordenaArrayString(array: favoritosList)
-        list = ordenaArrayString(array: list)
+        nomeDisciplina = (DisciplinasTableView.cellForRow(at: (DisciplinasTableView.indexPathForSelectedRow)!)?.textLabel?.text)!;
         
+        removeFromDisciplinaCoreData(nome: nomeDisciplina)
+        addToFavoritoCoreData(nome: nomeDisciplina)
+        
+        getData()
         DisciplinasTableView.reloadData()
         FavoritosTableView.reloadData()
     }
     
+    
     @IBAction func removeFavoritoButton()
     {
-        let selectedIndexPath = FavoritosTableView.indexPathForSelectedRow
-        let index:Int  = (selectedIndexPath!.last!)
-        list.append(favoritosList[index])
-        favoritosList.remove(at: index)
+        var nomeFavorito:String = ""
         
-        favoritosList = ordenaArrayString(array: favoritosList)
-        list = ordenaArrayString(array: list)
+        nomeFavorito = (FavoritosTableView.cellForRow(at: (FavoritosTableView.indexPathForSelectedRow)!)?.textLabel?.text)!;
         
+        removeFromFavoritoCoreData(nome: nomeFavorito)
+        addToDisciplinaCoreData(nome: nomeFavorito)
+        
+        getData()
         DisciplinasTableView.reloadData()
         FavoritosTableView.reloadData()
     }
@@ -77,43 +171,72 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         {
             if(tableView == DisciplinasTableView)
             {
-                return (list.count)
+                return (disciplinas.count)
             }
             else
             {
-                return(favoritosList.count)
+                return(favoritos.count)
             }
         }
         public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
         {
             if(tableView == DisciplinasTableView)
             {
-                let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
-                cell.textLabel?.text = list[indexPath.row]
+                let cell = UITableViewCell()
+                let disc = disciplinas[indexPath.row]
                 
-                return(cell)
+                if let myName = disc.nome {
+                    cell.textLabel?.text = myName
+                }
+                return cell
             }
             else
             {
-            
-                let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
-                cell.textLabel?.text = favoritosList[indexPath.row]
-            
-                return(cell)
+                let cell = UITableViewCell()
+                let favs = favoritos[indexPath.row]
+                
+                if let myName = favs.nome {
+                    cell.textLabel?.text = myName
+                }
+                return cell
             }
         }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let disc = disciplinas[indexPath.row]
+            context.delete(disc)
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            
+            do {
+                disciplinas = try context.fetch(Disciplina.fetchRequest())
+            } catch {
+                print("Fetching Failed")
+            }
+        }
+        DisciplinasTableView.reloadData()
+    }
     
     func ordenaArrayString(array:[String]) -> [String]
     {
         return array.sorted { $0.localizedCaseInsensitiveCompare($1) == ComparisonResult.orderedAscending }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.title = "Disciplinas"
+        
+        DisciplinasTableView.delegate = self
+        DisciplinasTableView.dataSource = self
+        
+        FavoritosTableView.delegate = self
+        FavoritosTableView.dataSource = self
+        
+        populateWhenEmpty()
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
