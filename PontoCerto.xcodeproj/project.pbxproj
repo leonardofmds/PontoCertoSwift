@@ -14,6 +14,7 @@
 		A73634961F08B9CF00481C7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A73634951F08B9CF00481C7F /* Assets.xcassets */; };
 		A73634991F08B9CF00481C7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A73634971F08B9CF00481C7F /* LaunchScreen.storyboard */; };
 		A74B9CB61F097C60005E0800 /* NotasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74B9CB51F097C60005E0800 /* NotasViewController.swift */; };
+		A7EDEDAD1F0D47650096BD80 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7EDEDAC1F0D47650096BD80 /* Cell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		A73634981F08B9CF00481C7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A736349A1F08B9CF00481C7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A74B9CB51F097C60005E0800 /* NotasViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotasViewController.swift; sourceTree = "<group>"; };
+		A7EDEDAC1F0D47650096BD80 /* Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				A736349A1F08B9CF00481C7F /* Info.plist */,
 				A73634921F08B9CF00481C7F /* PontoCerto.xcdatamodeld */,
 				A74B9CB51F097C60005E0800 /* NotasViewController.swift */,
+				A7EDEDAC1F0D47650096BD80 /* Cell.swift */,
 			);
 			path = PontoCerto;
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 			files = (
 				A74B9CB61F097C60005E0800 /* NotasViewController.swift in Sources */,
 				A73634941F08B9CF00481C7F /* PontoCerto.xcdatamodeld in Sources */,
+				A7EDEDAD1F0D47650096BD80 /* Cell.swift in Sources */,
 				A736348E1F08B9CF00481C7F /* ViewController.swift in Sources */,
 				A736348C1F08B9CF00481C7F /* AppDelegate.swift in Sources */,
 			);

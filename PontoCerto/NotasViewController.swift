@@ -28,10 +28,13 @@ class NotasViewController  : UIViewController, UITableViewDataSource, UITableVie
             media += (item.nota * item.peso)
             peso += item.peso
         }
+        if avaliacoes.count > 0
+        {
+            media = media / peso
+        }
         
-        media = media / peso
         
-        mediaTextLabel.text = "Média: \(media)"
+        mediaTextLabel.text = "Média: \(String(format:"%.2f", media))"
         
     }
     
@@ -79,17 +82,60 @@ class NotasViewController  : UIViewController, UITableViewDataSource, UITableVie
     
     @IBOutlet weak var notaTextField: UITextField!
     
+    func alertEmptyFields()
+    {
+        let alert = UIAlertController(title: "Erro", message: "Por favor preencha corretamente os campos.", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     @IBAction func addAvaliacao(_ sender: Any)
     {
+        var tipoAv:String = ""
+        var peso:Double = 0.0
+        var nota:Double = 0.0
+        
+        if let t = tipoAvaliacaoTextField.text
+        {
+            tipoAv = t
+        }
+        else
+        {
+            alertEmptyFields()
+            return
+        }
+        if let n = Double(notaTextField.text!)
+        {
+            nota = n
+        }
+        else
+        {
+            alertEmptyFields()
+            return
+        }
+        if let p = Double(pesoTextField.text!)
+        {
+            peso = p
+        }
+        else
+        {
+            alertEmptyFields()
+            return
+        }
+        
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let av = Avaliacao(context: context) // Link Task & Context
         av.nomeFavorito = nomeDisciplina
-        av.tipoAvaliacao = tipoAvaliacaoTextField.text
-        av.nota = Double(notaTextField.text!)!
-        av.peso = Double(pesoTextField.text!)!
+        av.nota = nota
+        av.peso = peso
+        av.tipoAvaliacao = tipoAv
         
         // Save the data to coredata
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        
+        tipoAvaliacaoTextField.text = ""
+        notaTextField.text = ""
+        pesoTextField.text = ""
         
         getData()
         avaliacoesTableView.reloadData()

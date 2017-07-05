@@ -126,7 +126,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         if let selectedIndexPath = DisciplinasTableView.indexPathForSelectedRow
         {
-            nomeDisciplina = (DisciplinasTableView.cellForRow(at: (selectedIndexPath))?.textLabel?.text)!;
+            let cell = DisciplinasTableView.cellForRow(at: (selectedIndexPath)) as! Cell
+            nomeDisciplina = cell.disciplinaLabel.text!;
             
             removeFromDisciplinaCoreData(nome: nomeDisciplina)
             addToFavoritoCoreData(nome: nomeDisciplina)
@@ -170,7 +171,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if let selectedIndexPath = FavoritosTableView.indexPathForSelectedRow
         {
         
-        nomeFavorito = (FavoritosTableView.cellForRow(at: (selectedIndexPath))?.textLabel?.text)!;
+        let cell = FavoritosTableView.cellForRow(at: (selectedIndexPath)) as! Cell
+        nomeFavorito = cell.disciplinaLabel.text!;
+
         
         removeFromFavoritoCoreData(nome: nomeFavorito)
         addToDisciplinaCoreData(nome: nomeFavorito)
@@ -192,8 +195,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         if let selectedIndexPath = FavoritosTableView.indexPathForSelectedRow
         {
-        let cell : UITableViewCell! = FavoritosTableView.cellForRow(at: selectedIndexPath)
-        let t : String! = cell.textLabel!.text
+        let cell = FavoritosTableView.cellForRow(at: (selectedIndexPath)) as! Cell
+
+        let t : String! = cell.disciplinaLabel.text!;
         disciplinaToFav = t
         
         self.performSegue(withIdentifier: "toFav", sender: self)
@@ -235,40 +239,40 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         {
             if(tableView == DisciplinasTableView)
             {
-                let cell = UITableViewCell()
+                let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! Cell
                 let disc = disciplinas[indexPath.row]
                 
                 if let myName = disc.nome {
-                    cell.textLabel?.text = myName
+                    cell.disciplinaLabel.text = myName
                 }
                 return cell
             }
             else
             {
-                let cell = UITableViewCell()
+                let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! Cell
                 let favs = favoritos[indexPath.row]
                 
                 if let myName = favs.nome {
-                    cell.textLabel?.text = myName
+                    cell.disciplinaLabel.text = myName
                 }
                 return cell
             }
         }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let disc = disciplinas[indexPath.row]
-            context.delete(disc)
-            (UIApplication.shared.delegate as! AppDelegate).saveContext()
-            
-            do {
-                disciplinas = try context.fetch(Disciplina.fetchRequest())
-            } catch {
-                print("Fetching Failed")
-            }
-        }
-        DisciplinasTableView.reloadData()
-    }
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            let disc = disciplinas[indexPath.row]
+//            context.delete(disc)
+//            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+//            
+//            do {
+//                disciplinas = try context.fetch(Disciplina.fetchRequest())
+//            } catch {
+//                print("Fetching Failed")
+//            }
+//        }
+//        DisciplinasTableView.reloadData()
+//    }
     
     func ordenaArrayString(array:[String]) -> [String]
     {
@@ -286,7 +290,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         FavoritosTableView.delegate = self
         FavoritosTableView.dataSource = self
         
-        populateWhenEmpty()       
+        populateWhenEmpty()
+        
+        self.DisciplinasTableView.estimatedRowHeight = 80
+        self.DisciplinasTableView.rowHeight = UITableViewAutomaticDimension
+        
+        self.FavoritosTableView.estimatedRowHeight = 80
+        self.FavoritosTableView.rowHeight = UITableViewAutomaticDimension
+        
+        self.DisciplinasTableView.setNeedsLayout()
+        self.DisciplinasTableView.layoutIfNeeded()
+        
+        self.FavoritosTableView.setNeedsLayout()
+        self.FavoritosTableView.layoutIfNeeded()
     }
     
     override func didReceiveMemoryWarning() {
