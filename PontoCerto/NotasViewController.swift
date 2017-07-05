@@ -13,6 +13,28 @@ class NotasViewController  : UIViewController, UITableViewDataSource, UITableVie
 {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     @IBOutlet weak var avaliacoesTableView: UITableView!
+ 
+    
+    @IBOutlet weak var mediaTextLabel: UILabel!
+    
+    func calculaMedia()
+    {
+        var media : Double = 0.0
+        
+        var peso : Double = 0
+        
+        for item in avaliacoes
+        {
+            media += (item.nota * item.peso)
+            peso += item.peso
+        }
+        
+        media = media / peso
+        
+        mediaTextLabel.text = "Média: \(media)"
+        
+    }
+    
     
     override func viewWillAppear(_ animated: Bool)
     {
@@ -39,6 +61,7 @@ class NotasViewController  : UIViewController, UITableViewDataSource, UITableVie
         
         avaliacoes = aval
         
+        calculaMedia()
     }
 
     
