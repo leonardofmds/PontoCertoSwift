@@ -286,8 +286,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         FavoritosTableView.delegate = self
         FavoritosTableView.dataSource = self
         
-        populateWhenEmpty()
-        
+        populateWhenEmpty()       
     }
     
     override func didReceiveMemoryWarning() {
