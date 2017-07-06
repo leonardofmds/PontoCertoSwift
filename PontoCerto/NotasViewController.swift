@@ -28,7 +28,7 @@ class NotasViewController  : UIViewController, UITableViewDataSource, UITableVie
             media += (item.nota * item.peso)
             peso += item.peso
         }
-        if avaliacoes.count > 0
+        if peso > 0
         {
             media = media / peso
         }
