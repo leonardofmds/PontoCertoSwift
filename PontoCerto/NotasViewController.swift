@@ -191,6 +191,7 @@ class NotasViewController  : UIViewController, UITableViewDataSource, UITableVie
             }
         }
         avaliacoesTableView.reloadData()
+        calculaMedia()
     }
     
     override func viewDidLoad() {
